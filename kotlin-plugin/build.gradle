@@ -1,0 +1,38 @@
+String ktVersion = rootProject.ext.ktVersion
+
+apply plugin: "org.jetbrains.kotlin.jvm"
+apply plugin: "kotlin-kapt"
+
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$ktVersion"
+    compileOnly "org.jetbrains.kotlin:kotlin-compiler-embeddable:$ktVersion"
+    compileOnly "com.google.auto.service:auto-service:1.0-rc4"
+    kapt "com.google.auto.service:auto-service:1.0-rc4"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+apply plugin: "maven-publish"
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.example'
+            artifactId = 'debuglog-kotlin-gradle-plugin'
+            version = '1.0.0'
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url uri('../gradle-plugin')
+        }
+    }
+}

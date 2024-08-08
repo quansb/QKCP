@@ -1,0 +1,29 @@
+ext {
+
+    ktVersion = '1.7.10'
+
+
+    gradlePluginVersion = '4.1.0'
+    buildToolsVersion = '29.0.0'
+    compileSdkVersion = 29
+    targetSdkVersion = 29
+
+    //kotlin配置管理
+    kotlinConfig = [
+            kotlinStdlib: "org.jetbrains.kotlin:kotlin-stdlib:$ktVersion"
+    ]
+
+    javaConfig = [
+            version: JavaVersion.VERSION_1_8
+    ]
+
+    androidConfig = [
+            buildToolsVersion: "$buildToolsVersion",
+            compileSdkVersion: "$compileSdkVersion".toInteger(),
+            minSdkVersion    : 21,
+            targetSdkVersion : "$targetSdkVersion".toInteger(),
+            versionCode      : 1,
+            versionName      : "1.0.0",
+            applicationId    : "com.tcl.lintplugin",
+    ]
+}

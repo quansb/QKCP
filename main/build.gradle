@@ -1,0 +1,31 @@
+apply plugin: "java"
+apply plugin: "org.jetbrains.kotlin.jvm"
+apply plugin: "application"
+
+apply plugin: "debuglog"
+LogGradleExtension {
+    enabled = true
+    annotations = [
+            "org.example.DebugLog"
+    ]
+}
+
+repositories {
+    google()
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$ktVersion"
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$ktVersion"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+
+test {
+    useJUnitPlatform()
+}
